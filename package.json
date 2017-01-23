@@ -1,0 +1,47 @@
+{
+    "name": "shopify-monitor-atc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "electron .",
+        "dist:win": "build --windows --x64 --dir",
+        "dist:mac": "build --mac"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dzt/shopify-monitor-atc.git"
+    },
+    "author": "Peter Soboyejo <thepcmrtim@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+      "electron": "^1.4.12",
+      "electron-builder": "^10.15.1"
+    },
+    "dependencies": {
+      "bootstrap": "^3.3.7",
+      "electron-config": "^0.2.1",
+      "font-awesome": "^4.7.0",
+      "jquery": "^3.1.1",
+      "request": "^2.79.0"
+    },
+    "bugs": {
+        "url": "https://github.com/dzt/shopify-monitor-atc/issues"
+    },
+    "homepage": "https://github.com/dzt/shopify-monitor-atc#readme",
+    "build": {
+        "productName": "BetterAdidasStockChecker",
+        "appId": "com.petersoboyejo.basc",
+        "mac": {
+            "target": "default",
+            "icon": "assets/logo.icns"
+        },
+        "win": {
+            "title": "BetterAdidasStockChecker",
+            "icon": "assets/logo.ico",
+            "version": "1.0.0",
+            "target": "squirrel",
+            "authors": "Peter Soboyejo"
+        }
+    }
+}
