@@ -10,16 +10,7 @@ const os = require('os')
 
 const debug = /--debug/.test(process.argv[2])
 
-var mainWindow
-
-app.setAsDefaultProtocolClient('shopify')
-
-app.on('open-url', function(event, url) {
-    var split = url.split('//')
-    var shopifyurl = split
-    var linkToCart = shopifyurl[1] + '://' + shopifyurl[2]
-    dialog.showErrorBox('Link to be added to cart', linkToCart)
-})
+var mainWindow, sender
 
 function createMainWindow() {
     mainWindow = new BrowserWindow({
@@ -47,8 +38,20 @@ function createMainWindow() {
         mainWindow.webContents.openDevTools()
         require('devtron').install()
     }
+    sender = mainWindow.webContents
 }
 
 app.on('ready', () => {
     createMainWindow()
+    init()
 })
+
+function init() {
+    app.setAsDefaultProtocolClient('shopify')
+    app.on('open-url', function(event, url) {
+        var split = url.split('//')
+        var shopifyurl = split
+        var linkToCart = shopifyurl[1] + '://' + shopifyurl[2]
+        mainWindow.webContents.send('log', `Task Added (${linkToCart})`)
+    })
+}
