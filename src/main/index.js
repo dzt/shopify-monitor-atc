@@ -51,7 +51,11 @@ function init() {
     app.on('open-url', function(event, url) {
         var split = url.split('//')
         var shopifyurl = split
-        var linkToCart = shopifyurl[1] + '://' + shopifyurl[2]
-        mainWindow.webContents.send('log', `Task Added (${linkToCart})`)
+        var linkToCart = shopifyurl[1] + '//' + shopifyurl[2]
+        var data = {
+          msg: `Task Added (${linkToCart})`,
+          link: linkToCart
+        }
+        mainWindow.webContents.send('log', data)
     })
 }

@@ -44,6 +44,13 @@ span.gray {
   float: left;
 }
 
+.console-log:after {
+    content:" ";
+    overflow:hidden;
+    color:transparent;
+    display: block;
+}
+
 .light-theme .console-log{
   color: #080808;
 }
